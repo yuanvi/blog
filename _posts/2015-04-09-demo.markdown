@@ -1,9 +1,0 @@
----
-published: true
-title: demo post
-layout: post
-tags: [tag1, tag2]
-categories: [category1, category2]
----
-
-blog content here
