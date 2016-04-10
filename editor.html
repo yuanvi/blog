@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>VI</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+</head>
+<body>
+    <textarea name="markdown" id="markdown-editor">
+    ```
+    published: true
+    layout: post
+    title:
+    tags: []
+    categories: []
+    ```
+    </textarea>
+    <script type="text/javascript">
+       new SimpleMDE({
+            element: document.getElementById("markdown-editor"),
+            spellChecker: false,
+            autosave: {
+                enabled: true,
+                unique_id: "viblog",
+            },
+            renderingConfig: {
+                singleLineBreaks: false,
+                codeSyntaxHighlighting: true,
+            },
+       }).toggleSideBySide(); 
+    </script>
+</body>
+</html>

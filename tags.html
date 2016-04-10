@@ -1,0 +1,39 @@
+---
+layout: default
+title: Home
+---
+<div class="content-tags">
+    {% for tag in site.tags %}
+    <a class="tag" href="javascript:display('{{ tag[0] }}');">{{ tag[0] }}<span class="num">{{ tag[1] | size }}</span></a>&nbsp;
+    {% endfor %}
+</div>
+<section class="archive">
+{% for tag in site.tags %}
+    <div id="{{ tag[0] }}" style="display:none;">
+        <a href="#{{ tag[0] }}" name="{{ tag[0] }}"></a>
+        <h2>{{ tag[0] }}</h2>
+    {% for post in tag[1] %}
+        <article>
+        <div>
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %B" }}</time>&nbsp;
+            <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </div>
+        </article>
+    {% endfor %}
+    </div>
+{% endfor %}
+</section>
+<script type="text/javascript">
+function display(tag) {
+    nodes = document.getElementsByTagName('section')[0].children;
+    for (var i = 0; node = nodes[i++];) {
+        node.style.display = "none";
+    }
+    if (tag) {
+        document.getElementById(tag).style.display = "block"; 
+    } else {
+        nodes[0].style.display = "block";
+    }
+};
+display(window.location.hash.substring(1));
+</script>

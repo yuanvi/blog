@@ -1,0 +1,8 @@
+excerpt_separator: ""
+highlighter: pygments
+markdown: kramdown
+url: http://yuanvi.cn
+title: VI
+tagline: Simplest
+description: Null
+permalink: /:year/:month/:day/:title
