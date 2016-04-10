@@ -3,4 +3,4 @@ It is a jekyll theme modified from a [tinypress](http://tinypress.co) default te
 
 My Blog: [VI Simplest](http://yuanvi.cn)
 
-Do anything you want.
+Editor: [Markdown Editor](http://yuanvi.cn/editor.html) (via [SimpleMDE](https://github.com/NextStepWebs/simplemde-markdown-editor))
