@@ -2,7 +2,7 @@
 published: true
 title: clojure实现zookeeper watcher小例子
 layout: post
-tags: [clojure, zookeeper, curator]
+tags: [clojure, zookeeper]
 categories: [clojure, 分布式计算]
 ---
 用clojure基于curator实现一个zookeeper node watcher的小例子：

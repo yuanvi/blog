@@ -2,7 +2,7 @@
 published: true
 title: 快速实现markdown博客(1)
 layout: post
-tags: [python, jekyll, blog]
+tags: [jekyll]
 categories: [web]
 ---
 ### Jekyll

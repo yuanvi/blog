@@ -2,7 +2,7 @@
 published: true
 title: 快速实现markdown博客(2)
 layout: post
-tags: [python, flask, jinja2, markdown]
+tags: [python, flask]
 categories: [python, web]
 ---
 基于flask快速实现简单粗暴markdown的博客，render主要在前端来做，用 [SimpleMDE](https://github.com/NextStepWebs/simplemde-markdown-editor)，那么后端仅用维护文件目录和render出html文件就行。总共仅需两个文件：

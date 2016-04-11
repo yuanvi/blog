@@ -1,6 +1,6 @@
 ---
 published: true
-title: 基于libemu的shellcode检测原理(1)
+title: 基于libemu的shellcode检测(1)
 layout: post
 tags: [shellcode, 源码分析, 汇编, 虚拟化]
 categories: [C/C++, 安全]
