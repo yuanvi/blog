@@ -42,7 +42,7 @@ libemu并没有在初始化的时候申请4G的内存空间，仅是初始化了
 #define OFFSET(x) (((1 << PAGE_BITS) - 1) & (x))        /* lowest 10 bits, offset of page start address */
 ```
 
-emu_memory结构体中大小为6的的segment_table字段，存储的是6个段选择器的值，在初始化的时候，FS值的被设置为0x7ffdf000，这个地址在较老的windows系统中直接存储了PEB结构，h新的版本里这个结构地址做了随机化，但可以通过FS指向的TEB结构0x30处的值取到：``` mov eax, [FS:0x30]; mov PEB, eax```。
+emu_memory结构体中大小为6的的segment_table字段，存储的是6个段选择器的值，在初始化的时候，FS值的被设置为0x7ffdf000，这个地址在较老的windows系统中直接存储了PEB结构，新的版本里这个结构地址做了随机化，但可以通过FS指向的TEB结构0x30处的值取到：``` mov eax, [FS:0x30]; mov PEB, eax```。
 
 ### shellcode检测
 
