@@ -6,9 +6,9 @@ tags: [phantomjs, qt, 源码分析]
 categories: [JavaScript, C/C++]
 ---
 
-项目中用到了和phantomjs类似的技术，基于的是phantomjs中的headless webkit，phantomjs源码中带的qt编译后没有图形库依赖，很适合用在服务器上，这里只是分析外层wrapper的原理，不对其JS模块和解释器做说明。
+项目中用到了和PhantomJS类似的技术，使用了PhantomJS源码中带的qt，编译后没有图形库依赖，很适合用在服务器上。这里只是分析一下PhantomJS外层wrapper的实现原理，不对其JS模块和解释器做说明。
 
-实际上，看完phantomjs的文档，对phantom对象实现方式的第一反应就应该是addToJavaScriptWindowObject。这个API由QWebFrame类提供，如果js引擎是JSC的话，最终会调用到WebCore的bridge中针对qt的createRuntimeObject实现。函数的作用是将指定的C++对象绑定到js引擎中的Window上，实现类似javascirpt代码中document/navigator对象的效果。
+实际上，看完PhantomJS文档，对其中phantom对象实现方式第一反应就应该是addToJavaScriptWindowObject。这个API由QWebFrame类提供，如果使用的js引擎是JSC的话，最终会调用到WebCore的bridge中针对qt的createRuntimeObject实现。该函数的作用是将指定的C++对象绑定到JS引擎中的Window上，实现类似浏览器javascript代码中document/navigator对象的效果。
 
 按照这个思路，在phantomjs的源码目录中grep一下，果然找到代码如下：
 
@@ -24,9 +24,9 @@ webpage.cpp:        frame->addToJavaScriptWindowObject(CALLBACKS_OBJECT_NAME, ca
 
 来看phantom对象的实现，从官方的文档上看，phantom对象的作用主要有两个，注入执行JS代码和管理cookies。注入执行JS代码调用了 [QWebFrame](http://doc.qt.io/qt-4.8/qwebframe.html) 的evaluateJavascript函数；对cookies的管理代码则是对 [QNetworkCookieJar](http://doc.qt.io/qt-4.8/qnetworkcookiejar.html) 增删查改的封装。
 
-PhantomJS中经常操作对象还有webpage，webpage不仅提供了对当前访问页面的各种操作，还提供了webkit从网络请求到dom节点操作的各类回调事件，通常用phantomjs来做爬虫或页面操作用得最多的也是这个对象。
+PhantomJS中经常操作对象还有webpage，webpage不仅提供了对当前访问页面的各种操作，还提供了webkit从网络请求到dom节点操作的各类回调事件，通常用PhantomJS来做爬虫或页面处理用得最多的也是这个对象。
 
-虽然对象名是webpage，但实际上webpage操作的是一个页面中的frame，提供了switchToChildFrame、switchToMainFrame等几个函数来在可操作的frames之间转换。再看上面grep出的代码，从webpage.cpp中找到具体实现：
+虽然对象名是webpage，但实际上webpage操作的是一个页面中的frame，只是提供了switchToChildFrame、switchToMainFrame等几个函数来在可操作的frames之间转换。再看上面grep出的代码，从webpage.cpp中找到具体实现：
 
 ```c++
 #define CALLBACKS_OBJECT_NAME           "_phantom"
@@ -49,7 +49,7 @@ static void injectCallbacksObjIntoFrame(QWebFrame *frame, WebpageCallbacks *call
 }
 ```
 
-上面的代码把callbacksObject绑定为了window._phantom，callbackObjects类WebpageCallbacks实现非常简单，存储了四个callback函数，供注入的js发生回调事件时调用，其中大部分的回调都是通过genericCallback来传递。
+上面的代码把callbacksObject绑定为了window._phantom，callbackObjects类WebpageCallbacks实现非常简单，存储了四个callback函数，供注入的js发生回调事件时调用，其中大部分的回调都是通过其中的genericCallback来传递的，这个callback函数只是传递arguments列表，不做任何解析。
 
 现在已经有了绑定到页面中的对象，并且可以注入代码执行，还可以接收回调，已经可以实现基本需求，那么接下来就是js部分的实现。
 
