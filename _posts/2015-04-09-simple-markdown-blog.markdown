@@ -3,7 +3,7 @@ published: true
 title: 快速实现markdown博客(1)
 layout: post
 tags: [jekyll]
-categories: [web]
+categories: [Web]
 ---
 ### Jekyll
 就像习惯了shell环境连鼠标都不想拿一样，一直不想用通用博客繁琐纠结的编辑器，觉得用markdown写博客最简单方便。以前自己在vps上用python简单粗暴的实现了一个，现在准备迁到github上去，顺便记录一下过程。

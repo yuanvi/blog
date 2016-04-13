@@ -3,7 +3,7 @@ published: true
 title: storm源码分析 - ShellBolt实现
 layout: post
 tags: [storm, 源码分析, java]
-categories: [java, 分布式计算]
+categories: [Java, 分布式计算]
 ---
 
 使用storm的过程中，可能在业务的某个处理节点上，只是想把原来实现的代码简单修改就快速迁移到blot或者spout中，storm也提供了对这种需求的支持。在源码的storm-multilang目录下，提供了javascript、python和ruby的多语言库，迁移业务时，只需要用这些库对输入输出进行封装即可。实际上，storm的通过子进程的标准输入输出来进行通信，也就是说，只要我们封装的子进程满足这个通信协议，就可以使用ShellBolt来运行。先简单说明一个使用ShellBlot的例子：

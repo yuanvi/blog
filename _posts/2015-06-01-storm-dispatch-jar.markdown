@@ -3,7 +3,7 @@ published: true
 title: storm源码分析 - Jar文件分发
 layout: post
 tags: [storm, 源码分析, java, clojure, thrift]
-categories: [java, clojure, 分布式计算]
+categories: [Java, Clojure, 分布式计算]
 ---
 
 在使用storm过程中，通常用类似下面的代码来提交topology到集群，首先，storm需要将jar包分发到分配的supervisor机器上，这篇文章主要分析storm中Jar文件分发的过程。

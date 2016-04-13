@@ -3,7 +3,7 @@ published: true
 title: python快速实现http接口
 layout: post
 tags: [python, http]
-categories: [python, web]
+categories: [Python, Web]
 ---
 平时常用```python -m SimpleHTTPServer 8080```来创建一个http服务共享文件，但有时候会有数据需要做个接口来给别人调用，或者是去查某个服务需要有一个http回调接口，很多时候这些接口还不是长期的，去装一个框架或者http服务感觉又划不来。看了一下，其实SimpleHTTPServer模块就可以满足需求 [参考文档](https://docs.python.org/2/library/simplehttpserver.html#SimpleHTTPServer.SimpleHTTPRequestHandler)，简单实现如下：
 

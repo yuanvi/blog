@@ -3,7 +3,7 @@ published: true
 title: flask中static_folder实现
 layout: post
 tags: [python, flask]
-categories: [python, web]
+categories: [Python, Web]
 ---
 一个比较奇葩的需求，希望在flask中指定了static_folder之后，对static folder中目录的请求能实现类似default page的效果，看了一下实现，发现flask并不支持。
 
