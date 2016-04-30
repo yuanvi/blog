@@ -15,7 +15,7 @@ title: Home
     {% for post in tag[1] %}
         <article>
         <div>
-            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %B" }}</time>&nbsp;
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %b" }}</time>&nbsp;
             <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
         </div>
         </article>

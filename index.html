@@ -20,7 +20,7 @@ title: Home
 {% endunless %}
   <article>
     <div>
-        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %B" }}</time>&nbsp;
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %b" }}</time>&nbsp;
         <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" class="col span_8">{{ post.title }}</a>
     </div>
   </article>
